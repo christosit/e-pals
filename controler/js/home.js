@@ -125,7 +125,7 @@ function get_all_posts(){
         },
         cache: false,
         success: function (data) {
-            console.log(data);
+        //    console.log(data);
             var d = $.parseJSON(data);
 
             $.each(d,function(i,obj  ) {
@@ -167,7 +167,7 @@ function get_user_data(user_id) {
         },
         cache: false,
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             var obj = jQuery.parseJSON(data);
             var name = obj.name;
             var surname = obj.surname;

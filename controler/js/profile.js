@@ -22,7 +22,7 @@ window.setInterval(function () {
 
 
 function get_daemon_data(user_id) { // ti kn gia piano message - koitazeis to read an en 0 tote pianeis to kn note
-    console.log('user_id', user_id);
+    //console.log('user_id', user_id);
     $.ajax({
         type: "POST",
         url: "../model/admin_functions.php",
@@ -90,7 +90,7 @@ function get_category_name() {
         },
         cache: false,
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             var obj = jQuery.parseJSON(data);
             $.each(obj, function (i, item) {
                 $('.interests').append('<li><a href="#">' + item.category_name + '</a></li>');
@@ -113,7 +113,7 @@ function get_messages(user_id) {
         },
         cache: false,
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             var obj = jQuery.parseJSON(data);
             var count = obj.length;
             $('#msg_count').text(count);

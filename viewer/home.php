@@ -50,8 +50,10 @@ if (!isset($_SESSION['user_id'])) {
     <link href="../viewer/css/sweet-alert.css" rel="stylesheet">
     <script src="../controler/js/jquery.ddslick.js "></script>
     <script src="../controler/js/bootstrap3-typeahead.js"></script>
+    <script src="../controler/js/search.js"></script>
+    <link href="../viewer/css/search.css" rel="stylesheet">
 
-    <script>
+    <!--script>
         $(document).ready(function() {
             $('input.typeahead').typeahead({
                 source: function (query, process) {
@@ -64,25 +66,20 @@ if (!isset($_SESSION['user_id'])) {
                         },
                         success: function(result) {
                             //var data = $.parseJSON(result);
-                            //typeahead dropdown-menu
-                            console.log(result);
-                            //$('.typeahead.dropdown-menu').append('<li><a class="dropdown-item" href="#" role="option">;fdlksjfl</a></li>');
-                            process(result);
+                           console.log(result);
+
+                            //process(result);
                             $('.typeahead.dropdown-menu').ddslick({
-                                data: result.name,
-                                width: 300,
-                                imagePosition: "left",
-                                selectText: "Select your favorite social network",
-                                onSelected: function (data) {
-                                    console.log(data);
-                                }
+
+                                data: result,
+                                defaultSelectedIndex:2
                             });
                         }
                     });
                 }
             });
         });
-    </script>
+    </--script-->
 
 </head>
 
@@ -106,9 +103,13 @@ if (!isset($_SESSION['user_id'])) {
 
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input class="typeahead" type="text" data-provide="typeahead" autocomplete="on">
+                    <!--input class="typeahead" type="text" data-provide="typeahead" autocomplete="on"-->
+                    <div class="contentArea">
+                        <input type="search" class="form-control" placeholder="Search">
+                        <input type="search" class="search" id="inputSearch" /><span><i class="glyphicon glyphicon-search"></i> </span>
+                        <div id="divResult"></div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary"><span><i class="glyphicon glyphicon-search"></i> </span></button>
             </form>
             <div class="collapse navbar-collapse">
                 <div  id="not" align="right">

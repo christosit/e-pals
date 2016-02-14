@@ -199,7 +199,7 @@ function search(){
         // Add validation and sanitization on $_POST['query'] here
 
         // Now set the WHERE clause with LIKE query
-        $query .= ' WHERE user.name OR user.surname OR interests.title LIKE "%'.$_POST['query'].'%"';
+        $query .= ' WHERE user.name OR user.surname OR interests.title LIKE "%'.$_POST['query'].'%" LIMIT 5';
     }
 
     $return = array();

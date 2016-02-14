@@ -1,0 +1,81 @@
+#id
+{
+    width: 50px;
+}
+#title,#category{
+    width: 300px;
+}
+
+#myid{
+    z-index: 9999;
+}
+#cat{
+    z-index: 9999;
+    top:0;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+    float: right;
+    background-color: #A9D0F5;
+    position: fixed;
+    height: 300px;
+}
+#sticky.stick {
+    position: fixed;
+    z-index: 10000;
+    top :0;
+}
+/* bootstrap 3 helpers */
+
+.navbar-form input, .form-inline input {
+    width:auto;
+}
+
+
+
+header {
+    height:480px;
+}
+
+#nav.affix {
+    position: fixed;
+    top: 0;
+}
+
+#sidebar.affix-top {
+    position: static;
+}
+
+#sidebar.affix {
+    position: fixed;
+    top: 190px;
+}
+/* bootstrap 3 helpers */
+
+.navbar-form input, .form-inline input {
+    width:auto;
+}
+
+
+
+header {
+
+    height:480px;
+}
+
+#nav.affix {
+    position: fixed;
+    top: 30px;
+    width: 50%;
+}
+.navbar{
+    display: inline;
+}
+#sidebar.affix-top {
+    position: static;
+}
+
+#sidebar.affix {
+    position: fixed;
+    top: 180px;
+}

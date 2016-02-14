@@ -1,0 +1,129 @@
+/* Based on a Dribbble shot by Andreas Storm
+   http://dribbble.com/shots/1127916-Sign-in
+*/
+
+*{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+
+/*::-webkit-input-placeholder {
+padding-left: 25px;
+}*/
+
+
+
+input[type="checkbox"]+ span{
+    width:10px;
+    height:10px;
+    position:relative;
+    outline:medium none;
+    margin-right:30px;
+}
+
+
+input[type="submit"]{
+    display:block;
+    padding:10px;
+    background:#50BFA4;
+    border:0;
+    border-radius:3px;
+    font-weight:bold;
+    width:100%;
+    color:#fff;
+    cursor:pointer;
+    -webkit-transition:all 0.3s;
+    -moz-transition:all 0.3s;
+    transition:all 0.3s;
+}
+input[type="submit"]:hover{
+    background:#58CCB0;
+}
+.main-form{
+    width:450px;
+    margin: 100px auto;
+    padding:50px;
+    border: 1px solid rgba(0,0,0,0.1);
+    -webkit-box-shadow:0 1px 2px rgba(0,0,0,0.2);
+    background:#fff;
+}
+#log
+    {
+    margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 150px;
+    width: 450px;
+    display: block;
+    background-image: url("../../viewer/images/Logo_01.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+body
+{
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-image: url(../images/login.jpg);
+    margin: 0px;
+}
+
+.main-form > label{
+    display:block;
+    margin:10px 0 15px;
+    line-height:15px;
+    cursor:pointer;
+}
+.main-form > div{
+    margin-top:20px;
+}
+a{
+    color:#31708d;
+    text-decoration:none;
+}
+.main-form > a{
+    font-size:14px;
+    display:block;
+    text-align:center;
+    margin:10px 0;
+}
+
+
+.img-circle
+{
+    background-color: #bce8f1;
+    width: 170px;
+    height:150px;
+}
+.img-circle img
+{
+    height: 80%;
+    width: 90%;
+}
+
+#required{
+    color:red;
+}
+.modal-header{
+    color: black;
+}
+.modal-body {
+    color: black;
+}
+.toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+.toggle.ios .toggle-handle { border-radius: 20px; }
+input {
+    width: 100%;
+    padding: 1em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    -webkit-transition: 0.35s ease-in-out;
+    -moz-transition: 0.35s ease-in-out;
+    -o-transition: 0.35s ease-in-out;
+    transition: 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}

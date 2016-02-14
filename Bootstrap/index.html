@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-table.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+
+
+</head>
+<body>
+
+
+<div class="btn-group">
+    <button class="btn btn-default" id="get-selections">Get Selections</button>
+    <button class="btn btn-default" id="insert-row">Insert Row</button>
+
+
+</div>
+
+<table
+        id="table"
+        data-toggle="table"
+        data-url="data1.json"
+        data-click-to-select="true"
+        data-show-columns="true"
+        data-search="true"
+        data-pagination="true"
+        data-unique-id="id">
+    <thead>
+    <tr>
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id" >Item ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>
+
+<script>
+    $(function () {
+//        $('#table-methods').next().click(function () {
+  //          $(this).hide();
+
+        var id = 0;
+        function getRows () {
+            var rows = [];
+            for (var i = 0; i < 10; i++) {
+                rows.push({
+                    id: id,
+                    name: 'test' + id,
+                    price: '$' + id
+                });
+                id++;
+            }
+            return rows;
+        }
+//             nit table use data
+                    $table = $('#table').bootstrapTable({
+                        data: getRows()
+                    });
+
+            $('#get-selections').click(function () {
+                //alert();
+                alert('Selected values: ' + JSON.stringify($table.bootstrapTable('getSelections')));
+                alert($table.bootstrapTable('getRowByUniqueId', 1));
+            });
+    });
+
+    $('#insert-row').click(function () {
+        $('#table').bootstrapTable('append', {"id": 0, "name": "Mitsaras", "price": "$100"});
+    });
+
+
+
+
+    /*$('#load-data, #append-data, #check-all, #uncheck-all, ' +
+            '#show-loading, #hide-loading, #refresh').click(function () {
+        $table.bootstrapTable($(this).data('method'), getRows());
+    });*/
+            /*$('#merge-cells').click(function () {
+                $table.bootstrapTable('mergeCells', {
+                    index: 1,
+                    field: 'name',
+                    colspan: 2,
+                    rowspan: 3
+                })
+            });*/
+            /*$('#show-column, #hide-column').click(function () {
+                $table.bootstrapTable($(this).data('method'), 'id');
+            });*/
+
+
+</script>
+
+</body>
+</html>

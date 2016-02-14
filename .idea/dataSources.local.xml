@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - e_pals@localhost" uuid="79783d9f-1597-4ad1-aa9c-a98441443f73">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>e_pals.*</schema-pattern>
+      <default-schemas>e_pals.*</default-schemas>
+    </data-source>
+  </component>
+</project>

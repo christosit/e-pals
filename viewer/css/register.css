@@ -1,0 +1,69 @@
+*,
+*:before,
+*:after {
+    table-layout: fixed;
+
+}
+
+body {
+    background: url("../../viewer/images/linkd-hands.jpg") 50% fixed;
+    background-size: cover;
+}
+.input-group
+{
+    margin: 0 auto;
+}
+form input[type='text']
+{
+    width: 60%;
+    padding: 1em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    -webkit-transition: 0.35s ease-in-out;
+    -moz-transition: 0.35s ease-in-out;
+    -o-transition: 0.35s ease-in-out;
+    transition: 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+input[type='email']{
+    width: 60%;
+    padding: 1em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    -webkit-transition: 0.35s ease-in-out;
+    -moz-transition: 0.35s ease-in-out;
+    -o-transition: 0.35s ease-in-out;
+    transition: 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+}
+input[type='password']{
+    width: 55%;
+    padding: 1em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    -webkit-transition: 0.35s ease-in-out;
+    -moz-transition: 0.35s ease-in-out;
+    -o-transition: 0.35s ease-in-out;
+    transition: 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+
+}
+input[type='hidden']{
+     width: 20px;
+     padding: 1em;
+     line-height: 1.4;
+     background-color: #f9f9f9;
+     border: 1px solid #e5e5e5;
+     border-radius: 3px;
+     -webkit-transition: 0.35s ease-in-out;
+     -moz-transition: 0.35s ease-in-out;
+     -o-transition: 0.35s ease-in-out;
+     transition: 0.35s ease-in-out;
+     transition: all 0.35s ease-in-out;
+ }

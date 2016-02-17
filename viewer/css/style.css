@@ -463,8 +463,10 @@ width: 300px}
 .results {
     width: 174px;
     position: absolute;
-    border-bottom: 1px solid #c0c0c0;
-    z-index: auto;
+    padding:4px; border-top:solid 1px #dedede;
+    font-size:12px;
+    height:60px;
+    z-index: 9999;
 
 }
 

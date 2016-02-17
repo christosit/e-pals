@@ -5,9 +5,7 @@
 $(document).ready(function() {
     $(window).load(function () {
         var user_id = $('.username').text();
-
         get_all_posts();
-        get_user_data(user_id)
     });
 });
 //Insert Post
@@ -31,6 +29,7 @@ $(document).ready(function() {
        save_post(title,msg,user_id);
 });
 });
+
 function save_post( title, msg, user_id) {
     alert("id"+user_id);
     $.ajax({
@@ -89,31 +88,6 @@ function get_post(post_id) {
     });
 }
 
-function get_user_data(user_id) {
-    $.ajax({
-        type: "POST",
-        url: "../model/profile.php",
-        data: {
-            user_id: user_id,
-            choice: 0
-        },
-        cache: false,
-            success: function (data) {
-            var obj = jQuery.parseJSON(data);
-            console.log(data);
-            var name = obj.name;
-            var surname = obj.surname;
-            var full_name = name + " " + surname;
-            //alert(full_name);
-            //alert( obj.photo);
-            $('#name').text(full_name);
-            $('.name').text(full_name);
-            $(".user").attr("src", (obj.photo));
-            // alert("data :"+data);
-            return data;
-        }
-    });
-}
 
 
 function get_all_posts(){
@@ -156,35 +130,3 @@ $(document).ready(function(){
         }, 1000);
     });
 });
-function get_user_data(user_id) {
-    var choice = 0;
-    $.ajax({
-        type: "POST",
-        url: "../model/profile.php",
-        data: {
-            user_id: user_id,//kanonika prepei na stelnume panta to user_id, prepei na allaksume to 4_SESSION, pu na mporeis allakse to se $_SESSION['user_id']ok
-            choice: 0
-        },
-        cache: false,
-        success: function (data) {
-            //console.log(data);
-            var obj = jQuery.parseJSON(data);
-            var name = obj.name;
-            var surname = obj.surname;
-            var email = obj.email;
-            var admin = obj.isAdmin;
-            //alert(admin);
-            if (admin == 1) {
-                $('#account').append('<li><a href="/viewer/admin_profile.php" id="account"><i class="glyphicon glyphicon-user"></i><span>Admin profile</span></a></li>');
-            }
-            var full_name = name + " " + surname;
-            $('#name').text(full_name);
-            $('#name_input').val(name);
-            $('#surname_input').val(surname);
-            $('#email_input').val(email);
-            $('#name').removeAttr("title");
-            $('#email').removeAttr("title").text(email);
-            $(".user").attr("src", (obj.photo));
-        }
-    });
-}

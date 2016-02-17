@@ -25,9 +25,12 @@ $(document).ready(function(){
                     $.each(data, function(i,item){
                         var photo = item.photo;
                         var name = item.name +' '+item.surname;
-                        console.log(name);
+                        var interest = item.title;
+                        $("#divResult").html('');
+
                         $("#divResult").append(
-                            '<div class="display_box" align="left"><img src="'+photo+'" class="searchImg"/><span class="name">'+name+'</span></div>');
+                            '<div class="display_box" align="left"><img src="'+photo+'" class="searchImg"/><span class="name">'+name+'</span>' +
+                            '<span id="interests">'+ interest +'</span> </div>');
                     });
                 }
             });

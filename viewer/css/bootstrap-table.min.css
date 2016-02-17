@@ -45,7 +45,7 @@
 .fixed-table-body {
     overflow-x: auto;
     overflow-y: auto;
-    height: 500px
+    height: 300px
 }
 
 .fixed-table-container table {

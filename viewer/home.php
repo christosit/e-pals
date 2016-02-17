@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 ?>
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -30,13 +30,13 @@ if (!isset($_SESSION['user_id'])) {
     <!--END-->
 
 
-    <script src="../controler/js/profile.js"></script>
 
    <link href="../viewer/css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 
     <!-- NEWS FEED-->
     <script src="../controler/js/home.js"></script>
+    <script src="../controler/js/common_functions.js"></script>
     <link href="../viewer/css/home.css" rel="stylesheet">
     <link href="../viewer/css/profile.css" rel="stylesheet">
 
@@ -95,7 +95,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="navbar-header">
                 <a href="home.php">
                     <img src="images/logo_icon.png"  class=" img-rounded">
-                    <h4 id="name">User's Name</h4>
+                    <h4 class="name">User's Name</h4>
 
                 </a>
 
@@ -105,8 +105,8 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="form-group">
                     <!--input class="typeahead" type="text" data-provide="typeahead" autocomplete="on"-->
                     <div class="contentArea">
-                        <input type="search" class="form-control" placeholder="Search">
-                        <input type="search" class="search" id="inputSearch" /><span><i class="glyphicon glyphicon-search"></i> </span>
+                        <input type="text" class="search" id="inputSearch">
+                        <span><i class=" glyphicon glyphicon-search"></i></span>
                         <div id="divResult"></div>
                     </div>
                 </div>
@@ -114,31 +114,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="collapse navbar-collapse">
                 <div  id="not" align="right">
                     <script>
-                        $(document).ready(function(){
-                            $('#show_nots').popover({
-                                html : true,
-                                content: function() {
-                                    return $('#notificationContainer').html();
-                                }
-                            });
 
-                            $('#show_nots').click(function() {
-                                $('#show_msg').popover('hide');
-                            });
-
-
-                        });
-                        $(document).ready(function(){
-                            $('#show_msg').popover({
-                                html : true,
-                                content: function() {
-                                    return $('#messageContainer').html();
-                                }
-                            });
-                            $('#show_msg').click(function() {
-                                $('#show_nots').popover('hide');
-                            });
-                        });
                     </script>
 
 
@@ -216,7 +192,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="sidebar">
         <ul>
             <li><a href="profile.php"><i class="fa fa-user fa-lg"></i><span>Profile</span></a></li>
-            <li><a  data-toggle="modal" data-target='#edit' id="account"><i class="fa fa-cogs fa-lg"></i><span>Account Settings</span></a></li>
+            <li id="account"><a  data-toggle="modal" data-target='#edit' id="account"><i class="fa fa-cogs fa-lg"></i><span>Account Settings</span></a></li>
             <li><a href="../model/logout.php" id="account"><i class="fa fa-power-off fa-lg"></i><span>Log out</span></a></li>
         </ul>
     </div>

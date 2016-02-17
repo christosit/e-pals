@@ -10,7 +10,6 @@ if (!isset($_SESSION['user_id'])) {
 
 <html xmlns="http://www.w3.org/1999/html">
 <head xmlns="http://www.w3.org/1999/html">
-
     <link rel="shortcut icon" href="images/favicon.ico"/>   <!-- Browser Icon -->
 
     <meta charset="UTF-8">
@@ -39,31 +38,38 @@ if (!isset($_SESSION['user_id'])) {
     <link href="../viewer/css/style.css" rel="stylesheet">
     <!--script src="../controler/js/profile.js"></script-->
     <script src="../controler/js/profile.js"></script>
+    <script src="../controler/js/common_functions.js"></script>
+
     <script src="../controler/js/photo/save.js"></script>
     <script src="../controler/js/photo/user_pic.js"></script>
 
     <!--animsition--->
     <script src="../controler/js/animsition.js"></script>
-     <script src="../controler/js/style.js"></script>
+    <script src="../controler/js/style.js"></script>
     <link href="../viewer/css/animsition.css" rel="stylesheet">
 
+    <script src="../controler/js/bootstrap-table.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap-table.min.css">
 
+    <script src="../controler/js/jquery.ddslick.js "></script>
+    <script src="../controler/js/bootstrap3-typeahead.js"></script>
+    <script src="../controler/js/search.js"></script>
+    <link href="../viewer/css/search.css" rel="stylesheet">
 
-
+    <script src="../controler/js/autocomplete.js"></script>
 
 </head>
 <body>
 <p class="username" hidden><?php echo $_SESSION['user_id'] ?></p>
 
 <div class=" animsition">
-    <nav class="navbar navbar-default megamenu">
+    <nav class="navbar navbar-default megamenu ">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <a href="home.php">
-                    <img src="images/logo_icon.png"  class="img-circle  user ">
-                    <h4 id="name">User's Name</h4>
+                    <img src="images/logo_icon.png"  class=" img-rounded">
+                    <h4 class="name">User's Name</h4>
 
                 </a>
 
@@ -71,39 +77,19 @@ if (!isset($_SESSION['user_id'])) {
 
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <!--input class="typeahead" type="text" data-provide="typeahead" autocomplete="on"-->
+                    <div class="contentArea">
+                        <input type="search" class="search" id="inputSearch">
+                        <div id="divResult"></div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <div class="collapse navbar-collapse">
                 <div  id="not" align="right">
                     <script>
-                        $(document).ready(function(){
-                            $('#show_nots').popover({
-                                html : true,
-                                content: function() {
-                                    return $('#notificationContainer').html();
-                                }
-                            });
 
-                            $('#show_nots').click(function() {
-                                $('#show_msg').popover('hide');
-                            });
-
-
-                        });
-                        $(document).ready(function(){
-                            $('#show_msg').popover({
-                                html : true,
-                                content: function() {
-                                    return $('#messageContainer').html();
-                                }
-                            });
-                            $('#show_msg').click(function() {
-                                $('#show_nots').popover('hide');
-                            });
-                        });
                     </script>
+
 
 
 
@@ -113,7 +99,7 @@ if (!isset($_SESSION['user_id'])) {
                        data-placement="bottom"
                        title="Notifications"
                        id="show_nots"
-                       rel="popover"><span class="fa fa-flag"></span> Notifications <span id="notification_count" class="badge red"></span> </a>
+                       rel="popover"><span class="fa fa-globe"></span> Notifications <span id="notification_count" class=" badge "></span> </a>
                     <div id="notificationContainer">
 
                         <div id="notificationsBody" class="notifications">
@@ -128,8 +114,7 @@ if (!isset($_SESSION['user_id'])) {
                        data-placement="bottom"
                        title="MESSAGE"
                        id="show_msg"
-                       rel="popover">
-                        <span class="fa fa-inbox"></span> Messages <span id="msg_count" class="badge"></span> </a>
+                       rel="popover"><span class="fa fa-comments"></span> Messages <span id="msg_count" class="badge "></span> </a>
                     <div id="messageContainer">
 
                         <div id="notificationsBody" class="message">
@@ -167,16 +152,25 @@ if (!isset($_SESSION['user_id'])) {
 
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <h4 id="email"> </h4>
+                <div class="profile-usertitle-name">
+                    <h1 style="text-align: center;">Personal Details</h1>
+                    <h4 class="name"> </h4>
+                    <h4 class="surname"> </h4>
+
+                    <h4 id="email"></h4>
+                    <h4 id="address"></h4>
+                    <h4 id="birthday"></h4>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <button class="btn btn-primary">FOLLOW</button>
+                </div>
 
             </div>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
-                <!-- SIDEBAR MENU -->
+                <!-- SIDEBAR MENU 0-->
                 <div class="sidebar">
 
                     <ul>
@@ -239,7 +233,6 @@ color:darkblue;">&copy;<?php echo date("Y");?></em></div>
                             <th data-field="category">Category</th>
                         </tr>
                         </thead>
-                        <tbody></tbody>
                     </table>
 
                 </div>

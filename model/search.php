@@ -7,12 +7,13 @@
  */
 include 'connect.php';
 $key =$_POST['query'];
-
-$query = 'SELECT DISTINCT user.*, interests.*
+$query = 'SELECT  interests.title,user.*
           FROM user,interests
-          WHERE ((user.name OR user.surname)  LIKE "%'.$key.'%")
+          WHERE user.user_id = interests.user_id
+          AND (user.name LIKE "%'.$key.'%"
+          OR user.surname LIKE "%'.$key.'%"
+          OR interests.title LIKE "%'.$key.'%" )
+          GROUP BY user.user_id, interests.user_id LIMIT 5';
 
-          OR interests.title LIKE "%'.$key.'%"
-          LIMIT 5';
 $r1 = $dba->query($query);
 echo json_encode($r1->fetchall(PDO::FETCH_ASSOC));

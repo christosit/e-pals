@@ -7,8 +7,6 @@ $(document).ready(function () {
 
         var user_id = $('.username').text();
         console.log("User id = " + user_id);
-        get_user_data(user_id);
-        get_user_data_all(user_id);
 
         get_interests();
         top_categories();

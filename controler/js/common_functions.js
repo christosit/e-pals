@@ -9,9 +9,70 @@ $(document).ready(function () {
         get_user_interests(user_id);//gia edit
         get_category_name();
         get_messages(user_id);
-//loginfb();
+        get_all_posts();
     });
 });
+window.setInterval(function () {
+    /// call your function here
+    var user_id = $('.username').text();
+    get_daemon_data(user_id);
+    //console.log("hello from daemon");
+}, 5000);
+
+
+function get_daemon_data(user_id) { // ti kn gia piano message - koitazeis to read an en 0 tote pianeis to kn note
+    //console.log('user_id', user_id);
+    $.ajax({
+        type: "POST",
+        url: "../model/admin_functions.php",
+        data: {
+            user_id: user_id,
+            choice: 6
+        },
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            var obj = jQuery.parseJSON(data);
+            var count = obj.length;
+            $('#notification_count').text(count);
+            $('#noti_list').html('');
+            $.each(obj, function (i, item) {
+                var name = item.name + " " + item.surname;
+                var title = item.title;
+                var user_id = item.user_id;
+                var not_id = item.id;
+                var url = '../../viewer/profile_user.php?userid=' + user_id;
+                var msg = "User <a target='_blank' href=" + url + ">" + name + "</a> has posted something about<strong> " + title + "</strong> that you may be interest!";
+                $('#noti_list').append('<li  id ="' + not_id + '" class="list-group-item clearfix not">' + msg + '<a  class="send_msg" id="' + user_id + '" ><span  class="glyphicon glyphicon-comment"></span> </a>' +
+                    '</li>');
+
+            });
+
+            $(document.body).on('click', '.not', function () {
+                var n_id = $(this).attr('id');
+                console.log('asd', n_id);
+                $.ajax({
+                    type: "POST",
+                    url: "../model/admin_functions.php",
+                    data: {
+                        not_id: n_id,
+                        choice: 7
+                    },
+                    cache: false,
+                    success: function (data) {
+                        console.log(data);
+
+                        var obj = jQuery.parseJSON(data);
+                    }
+                });
+
+            });
+//});
+
+
+        }
+    });
+}
 
 function get_user_data(user_id) {
     var choice = 0;
@@ -38,6 +99,7 @@ function get_user_data(user_id) {
             }
             var full_name = name + " " + surname;
             $('.name').text(name);
+            $('#name').text(full_name);
             $('.surname').text(surname);
 
             $('#address').text(address);
@@ -198,6 +260,74 @@ function get_category_name() {
             });
             $('.dropdown-menu a').on('click', function () {
                 $('.dropdown-toggle').html($(this).html() + name + '<span class="caret"></span>');
+            });
+        }
+    });
+}
+
+function get_post(post_id) {
+    $.ajax({
+        type: "POST",
+        url: "../../model/home.php",
+        data: {
+            choice: 1,
+            post_id: post_id
+        },
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            var obj = $.parseJSON(data);
+            var id = obj.id;
+            var msg = obj.mesage;
+            var user_id = obj.from_user;
+            var date = obj.date_posted;
+            var name = obj.name;
+
+            var postTimestamp = 'Posted on: ' + new Date().toUTCString();
+            $( "#news" ).first().prepend("<div class='feed-item blog'>" +
+                "<div class='icon-holder'><div class='icon'>" +
+                "<img src='https://lh3.googleusercontent.com/-Az9OhFIaxEY/AAAAAAAAAAI/AAAAAAAAAAA/iHtDLHxQMFc/photo.jpg' class='icon user'></div>" +
+                "</div>" +
+                "<div class='text-holder col-3-5'>" +
+                "<div class='feed-title'>" + name + "</div>" +
+                "<div class='feed-description'>" + msg + "</div>" + "<p class='post-timestamp'>" + postTimestamp + "</p>" +
+                "</div><!--End of Text Holder-->"
+            ).fadeIn();
+            $('#text-box').val('');
+        }
+    });
+}
+
+
+
+function get_all_posts(){
+    $.ajax({
+        type: "POST",
+        url: "../../model/home.php",
+        data: {
+            choice: 4
+        },
+        cache: false,
+        success: function (data) {
+            //    console.log(data);
+            var d = $.parseJSON(data);
+
+            $.each(d,function(i,obj  ) {
+                var id = obj.id;
+                var msg = obj.mesage;
+                var user_id = obj.from_user;
+                var date = obj.date_posted;
+                var name = obj.name;
+                $('#news').append("<div class='feed-item blog'>" +
+                    "<div class='icon-holder'><div class='icon'>" +
+                    "<img src='https://lh3.googleusercontent.com/-Az9OhFIaxEY/AAAAAAAAAAI/AAAAAAAAAAA/iHtDLHxQMFc/photo.jpg' class='icon user'></div>" +
+                    "</div>" +
+                    "<div class='text-holder col-3-5'>" +
+                    "<div class='feed-title'>" + name + "</div>" +
+                    "<div class='feed-description'>" + msg + "</div>" + "<p class='post-timestamp'>" + date + "</p>" +
+                    "</div><!--End of Text Holder-->"
+                );
+
             });
         }
     });

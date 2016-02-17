@@ -35,6 +35,8 @@ if (!isset($_SESSION['user_id'])) {
     <link href="../viewer/css/profile_admin.css" rel="stylesheet">
     <link href="../viewer/css/admin.css" rel="stylesheet">
     <link href="../viewer/css/style.css" rel="stylesheet">
+    <!-- NEWS FEED-->
+
 
 
     <!--chart-->
@@ -44,6 +46,10 @@ if (!isset($_SESSION['user_id'])) {
 
     <script src="../controler/js/toggles.min.js"></script>
     <link href="css/toggles-full.css" rel="stylesheet">
+    <!--animsition--->
+    <script src="../controler/js/animsition.js"></script>
+    <script src="../controler/js/style.js"></script>
+    <link href="../viewer/css/animsition.css" rel="stylesheet">
 
     <!-- This is what you need -->
     <script src="../controler/js/sweet-alert.js"></script>
@@ -52,6 +58,28 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="css/bootstrap-table.min.css">
     <script src="../controler/js/bootstrap-table.min.js"></script>
 
+    <link href="../viewer/css/profile.css" rel="stylesheet">
+    <link href="../viewer/css/style.css" rel="stylesheet">
+    <!--script src="../controler/js/profile.js"></script-->
+    <script src="../controler/js/common_functions.js"></script>
+
+    <script src="../controler/js/photo/save.js"></script>
+    <script src="../controler/js/photo/user_pic.js"></script>
+
+    <!--animsition--->
+    <script src="../controler/js/animsition.js"></script>
+    <script src="../controler/js/style.js"></script>
+    <link href="../viewer/css/animsition.css" rel="stylesheet">
+
+    <script src="../controler/js/bootstrap-table.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-table.min.css">
+
+    <script src="../controler/js/jquery.ddslick.js "></script>
+    <script src="../controler/js/bootstrap3-typeahead.js"></script>
+    <script src="../controler/js/search.js"></script>
+    <link href="../viewer/css/search.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 
 
 
@@ -63,24 +91,86 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
 <p class="username" hidden><?php echo $_SESSION['user_id'] ?></p>
+<div class="animsition">
+    <nav class="navbar navbar-default megamenu ">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a href="home.php">
+                    <img src="images/logo_icon.png"  class=" img-rounded">
+                    <h4 id="name">User's Name</h4>
+
+                </a>
+
+            </div>
+
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <!--input class="typeahead" type="text" data-provide="typeahead" autocomplete="on"-->
+                    <div class="contentArea">
+                        <input type="search" class="search" id="inputSearch">
+                        <div id="divResult"></div>
+                    </div>
+                </div>
+            </form>
+            <div class="collapse navbar-collapse">
+                <div  id="not" align="right">
+                    <script>
+
+                    </script>
+
+
+
+
+
+
+                    <a href="#"
+                       data-placement="bottom"
+                       title="Notifications"
+                       id="show_nots"
+                       rel="popover"><span class="fa fa-globe"></span> Notifications <span id="notification_count" class=" badge "></span> </a>
+                    <div id="notificationContainer">
+
+                        <div id="notificationsBody" class="notifications">
+
+                            <ul class="list-group" id="noti_list">
+                            </ul>
+                        </div>
+                        </div>
+
+
+                    <a href="#"
+                       data-placement="bottom"
+                       title="MESSAGE"
+                       id="show_msg"
+                       rel="popover"><span class="fa fa-comments"></span> Messages <span id="msg_count" class="badge "></span> </a>
+                    <div id="messageContainer">
+
+                        <div id="notificationsBody" class="message">
+
+                            <ul class="list-group" id="msg_list">
+                            </ul>
+                        </div>
+
+                        </div>
+
+
+
+
+                </div>
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </nav>
 
 <div class="container-fluid">
 
-    <div class="header">
-        <a href="home.php" id="menu-action">
-            <img src="images/user.png"  class="user img-circle">
-        </a>
-        <div class="logo">
-            <h4 id="name">User's Name    </h4>
 
-
-        </div>
-    </div>
     <div class="sidebar">
         <ul>
             <li><a id="interests"><i class="fa fa-check"></i><span>Interests</span></a></li>
             <li><a href="#" id="statistics"><i class="fa fa-area-chart"></i><span>Statistics<span></a></li>
-            <li><a href="#" id="account"><i class="fa fa-user"></i><span>Account</span></a></li>
+            <li id="account"><a href="#" id="account"><i class="fa fa-user"></i><span>Account</span></a></li>
+
             <li><a href="../model/logout.php" id="account"><i class="fa fa-power-off"></i><span>Log out</span></a></li>
         </ul>
     </div>
@@ -206,6 +296,7 @@ if (!isset($_SESSION['user_id'])) {
 color:darkblue;">&copy;<?php echo date("Y");?></em></div>
     </div>
 </div>
+    </div>
 
 <script src="../controler/js/autocomplete_admin.js"></script>
 </body>

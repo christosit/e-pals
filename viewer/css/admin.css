@@ -11,7 +11,7 @@
 }
 #cat{
     z-index: 9999;
-    top:0;
+    top: 50px;
     bottom: 0;
     right: 0;
     width: 250px;
@@ -27,15 +27,7 @@
 }
 /* bootstrap 3 helpers */
 
-.navbar-form input, .form-inline input {
-    width:auto;
-}
 
-
-
-header {
-    height:480px;
-}
 
 #nav.affix {
     position: fixed;
@@ -68,10 +60,7 @@ header {
     top: 30px;
     width: 50%;
 }
-.navbar{
-    display: inline;
-}
-#sidebar.affix-top {
+    #sidebar.affix-top {
     position: static;
 }
 

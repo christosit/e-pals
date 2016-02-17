@@ -12,67 +12,6 @@ $(document).ready(function () {
     });
 });
 
-window.setInterval(function () {
-    /// call your function here
-    var user_id = $('.username').text();
-    get_daemon_data(user_id);
-    //console.log("hello from daemon");
-}, 5000);
-
-
-function get_daemon_data(user_id) { // ti kn gia piano message - koitazeis to read an en 0 tote pianeis to kn note
-    //console.log('user_id', user_id);
-    $.ajax({
-        type: "POST",
-        url: "../model/admin_functions.php",
-        data: {
-            user_id: user_id,
-            choice: 6
-        },
-        cache: false,
-        success: function (data) {
-            console.log(data);
-            var obj = jQuery.parseJSON(data);
-            var count = obj.length
-            $('#notification_count').text(count);
-            $('#noti_list').html('');
-            $.each(obj, function (i, item) {
-                var name = item.name + " " + item.surname;
-                var title = item.title;
-                var user_id = item.user_id;
-                var not_id = item.id;
-                var url = '../../viewer/profile_user.php?userid=' + user_id;
-                var msg = "User <a target='_blank' href=" + url + ">" + name + "</a> has posted something about<strong> " + title + "</strong> that you may be interest!";
-                $('#noti_list').append('<li  id ="' + not_id + '" class="list-group-item clearfix not">' + msg + '<a  class="send_msg" id="' + user_id + '" ><span  class="glyphicon glyphicon-comment"></span> </a>' +
-                    '</li>');
-
-            });
-
-            $(document.body).on('click', '.not', function () {
-                var n_id = $(this).attr('id');
-                console.log('asd', n_id);
-                $.ajax({
-                    type: "POST",
-                    url: "../model/admin_functions.php",
-                    data: {
-                        not_id: n_id,
-                        choice: 7
-                    },
-                    cache: false,
-                    success: function (data) {
-                        console.log(data);
-
-                        var obj = jQuery.parseJSON(data);
-                    }
-                });
-
-            });
-//});
-
-
-        }
-    });
-}
 
 //$(document).ready(function(){
 

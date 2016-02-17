@@ -95,7 +95,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="navbar-header">
                 <a href="home.php">
                     <img src="images/logo_icon.png"  class=" img-rounded">
-                    <h4 class="name">User's Name</h4>
+                    <h4 id="name">User's Name</h4>
 
                 </a>
 
@@ -112,7 +112,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </form>
             <div class="collapse navbar-collapse">
-                <div  id="not" align="right">
+                <div  class="not" align="right">
                     <script>
 
                     </script>
@@ -157,7 +157,7 @@ if (!isset($_SESSION['user_id'])) {
 
                 </div>
             </div>
-            </div><!-- /.navbar-collapse -->
+        </div><!-- /.navbar-collapse -->
     </nav>
     <div class="container">
 <div class="col-md-12">

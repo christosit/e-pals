@@ -62,14 +62,13 @@ if (!isset($_SESSION['user_id'])) {
 <body>
 <p class="username" hidden><?php echo $_SESSION['user_id'] ?></p>
 
-<div class=" animsition">
     <nav class="navbar navbar-default megamenu ">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <a href="home.php">
                     <img src="images/logo_icon.png"  class=" img-rounded">
-                    <h4 class="name">User's Name</h4>
+                    <h4 id="name">User's Name</h4>
 
                 </a>
 
@@ -190,7 +189,6 @@ if (!isset($_SESSION['user_id'])) {
     <div class="footer_img" align="center">
         <a href="#"><img src="../viewer/images/Logo_01.png" height ="30" width="140"></a><em style = "vertical-align: top;
 color:darkblue;">&copy;<?php echo date("Y");?></em></div>
-</div>
 </div>
 
 <div id="interest" class="modal fade "  role="dialog">
